@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const User = require('../../models/userModel/user.model');
 const customError = require('../../utils/customError');
 const cacheClient = require('../../services/cache.services');
+const logger = require('../../utils/logger');
 
 
 
@@ -62,6 +63,8 @@ const userLogin=async (req,res,next)=>{
             httpOnly:true,
             sameSite:"none"
         }) 
+
+        logger.info(`user logged in successfully with email: ${email}`)
     
         return res.status(200).json({
             status:true,
@@ -69,6 +72,7 @@ const userLogin=async (req,res,next)=>{
             data:user
         })
     } catch (error) {
+        logger.error(`user login failed with email: ${email} and error: ${error.message}`)
         next(new customError(error.message,400))
     }
 

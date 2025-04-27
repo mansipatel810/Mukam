@@ -53,7 +53,7 @@ userSchema.statics.authenticateUser=async function(email,password){
 
     const isMatch=await bcrypt.compare(password,user.password);
     if(!isMatch){
-        throw new Error("useNaame or password is incorrect");
+        throw new Error("userName or password is incorrect");
     }
     return user;
 }
