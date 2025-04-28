@@ -1,9 +1,4 @@
 const userModel=require('../../models/userModel/user.model');
-const express = require('express');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const mongoose = require('mongoose');
-const User = require('../../models/userModel/user.model');
 const customError = require('../../utils/customError');
 const cacheClient = require('../../services/cache.services');
 const logger = require('../../utils/logger');

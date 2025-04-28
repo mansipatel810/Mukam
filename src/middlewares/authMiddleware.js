@@ -7,6 +7,7 @@ const authMiddleware=async (req,res,next)=>{
     const token = req.cookies.token;
     
     try {
+        // console.log("token",token);
         if(!token){
             return next(new customError("Unauthorized access",401))
         }
